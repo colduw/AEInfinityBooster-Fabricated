@@ -27,7 +27,7 @@ public class MixinWirelessBlockEntity {
     @Shadow @Final private AppEngInternalInventory inv;
 
     @Inject(method = "<init>", at = @At(value = "RETURN"))
-    private void init(BlockEntityType blockEntityType, BlockPos pos, BlockState blockState, CallbackInfo ci){
+    private void init(BlockEntityType<?> blockEntityType, BlockPos pos, BlockState blockState, CallbackInfo ci){
         inv.setFilter(new IAEItemFilter() {
             @Override
             public boolean allowExtract(InternalInventory inv, int slot, int amount) {
